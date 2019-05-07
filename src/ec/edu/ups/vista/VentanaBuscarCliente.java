@@ -47,6 +47,10 @@ public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setText("Codigo");
 
@@ -85,6 +89,11 @@ public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jButton1.setText("Cerrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnBuscar.setText("Buscar");
@@ -181,6 +190,10 @@ public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
         txtTelf.setText(buscar.getTelefono());
         
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

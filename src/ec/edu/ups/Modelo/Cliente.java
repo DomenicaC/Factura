@@ -52,7 +52,7 @@ public class Cliente {
     
     //get
     public int getCodigo() {
-        return ++codigo;
+        return codigo;
     }
 
     public String getNombre() {

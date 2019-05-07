@@ -49,6 +49,9 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
         btnCrear = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -115,7 +118,7 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         Cliente cliente = new Cliente();
-System.out.println(cliente.getCodigo());
+        System.out.println(cliente.getCodigo());
         cliente.setCodigo(Integer.parseInt(txtCod.getText()));
         cliente.setNombre(txtNombre.getText());
         cliente.setCedula(txtCed.getText());
@@ -123,7 +126,7 @@ System.out.println(cliente.getCodigo());
         cliente.setTelefono(txtTelf.getText());
         contCliente.create(cliente);
         JOptionPane.showMessageDialog(this, "Cliente creado correctamente", "Crear Cliente", JOptionPane.OK_OPTION);
-        
+
         //volver a establecer codigo
         //limpiar cajas de texto
         txtCod.setText(String.valueOf(this.contCliente.getCodigo()));
@@ -131,12 +134,12 @@ System.out.println(cliente.getCodigo());
         txtCed.setText("");
         txtDir.setText("");
         txtTelf.setText("");
-        
-        
+
+
     }//GEN-LAST:event_btnCrearActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
+        this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
 

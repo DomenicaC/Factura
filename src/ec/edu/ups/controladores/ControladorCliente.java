@@ -22,11 +22,11 @@ public class ControladorCliente {
     public ControladorCliente() {
         lista= new HashSet<>();
         
-        codigo = 0;
+        codigo = 1;
     }
 
     public int getCodigo() {
-        return ++codigo;
+        return codigo;
     }
 
     public void setCodigo(int codigo) {
@@ -35,7 +35,7 @@ public class ControladorCliente {
     
     //crear un num=evo objeto en la lista
     public void create(Cliente objeto){
-        //codigo ++;
+        codigo ++;
         objeto.setCodigo(codigo);
         lista.add(objeto);
     }
