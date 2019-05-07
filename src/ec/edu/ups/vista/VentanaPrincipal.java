@@ -14,6 +14,14 @@ import ec.edu.ups.controladores.ControladorCliente;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     private ControladorCliente contCliente;
+    
+    //cotroladores
+    
+    //VentanaModificarCliente mod = new VentanaModificarCliente(contCliente);//modificar
+    
+    
+    
+    
     /**
      * Creates new form VentanaPrincipal
      */
@@ -33,9 +41,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
+        jlbTitulo = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         crearMenuItem = new javax.swing.JMenuItem();
@@ -54,19 +60,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("Factura");
-        desktopPane.add(jLabel1);
-        jLabel1.setBounds(130, 20, 160, 40);
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel2.setText("jLabel2");
-        desktopPane.add(jLabel2);
-        jLabel2.setBounds(40, 110, 79, 28);
-
-        txtCodigo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        desktopPane.add(txtCodigo);
-        txtCodigo.setBounds(180, 110, 140, 30);
+        jlbTitulo.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jlbTitulo.setText("Factura");
+        desktopPane.add(jlbTitulo);
+        jlbTitulo.setBounds(130, 20, 160, 40);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Cliente");
@@ -84,11 +81,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         buscarMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         buscarMenuItem.setMnemonic('s');
         buscarMenuItem.setText("Buscar");
+        buscarMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(buscarMenuItem);
 
         modificarAsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         modificarAsMenuItem.setMnemonic('a');
         modificarAsMenuItem.setText("Modificar");
+        modificarAsMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarAsMenuItemActionPerformed(evt);
+            }
+        });
         fileMenu.add(modificarAsMenuItem);
 
         eliminarMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
@@ -152,11 +159,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
         );
 
         pack();
@@ -171,10 +178,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_imprimirMenuItem1ActionPerformed
 
     private void crearMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearMenuItemActionPerformed
-        VentanaCrearCliente crear = new VentanaCrearCliente(contCliente);
+        VentanaCrearCliente crear = new VentanaCrearCliente(contCliente);//crear
         crear.setVisible(true);
         desktopPane.add(crear);
+        jlbTitulo.setVisible(false);
+        
     }//GEN-LAST:event_crearMenuItemActionPerformed
+
+    private void modificarAsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarAsMenuItemActionPerformed
+        
+        //mod.setVisible(true);
+       // desktopPane.add(mod);
+        jlbTitulo.setVisible(false);
+        
+        
+    }//GEN-LAST:event_modificarAsMenuItemActionPerformed
+
+    private void buscarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMenuItemActionPerformed
+        VentanaBuscarCliente buscarC = new VentanaBuscarCliente(contCliente);//buscar
+        buscarC.setVisible(true);
+        desktopPane.add(buscarC);
+        jlbTitulo.setVisible(false);
+        
+    }//GEN-LAST:event_buscarMenuItemActionPerformed
 
     
     
@@ -228,12 +254,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem imprimirMenuItem1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jlbTitulo;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem modificarAsMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
-    private javax.swing.JTextField txtCodigo;
     // End of variables declaration//GEN-END:variables
 
 }

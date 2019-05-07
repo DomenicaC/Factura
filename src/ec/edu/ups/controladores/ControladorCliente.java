@@ -35,7 +35,7 @@ public class ControladorCliente {
     
     //crear un num=evo objeto en la lista
     public void create(Cliente objeto){
-        codigo ++;
+        //codigo ++;
         objeto.setCodigo(codigo);
         lista.add(objeto);
     }

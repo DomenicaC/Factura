@@ -7,6 +7,7 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.Modelo.Cliente;
 import ec.edu.ups.controladores.ControladorCliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,9 +18,8 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaCrear
      */
-    
     private ControladorCliente contCliente;
-    
+
     public VentanaCrearCliente(ControladorCliente contCliente) {
         initComponents();
         this.contCliente = contCliente;
@@ -46,7 +46,8 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
         txtTelf = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnCrear = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -87,33 +88,61 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
         jLabel5.setText("Telefono");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
 
-        jLabel6.setText("jLabel6");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, -1));
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel6.setText("Nuevo Cliente");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, -1));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCrear.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        btnCrear.setText("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCrearActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+        getContentPane().add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, -1, -1));
+
+        btnCancelar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Cliente cliente = new Cliente();
-       cliente.setNombre(txtNombre.getText());
-       cliente.setCedula(txtCed.getText());
-       cliente.setDirecion(txtDir.getText());
-       cliente.setTelefono(txtTelf.getText());
-       contCliente.create(cliente);
-       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        Cliente cliente = new Cliente();
+System.out.println(cliente.getCodigo());
+        cliente.setCodigo(Integer.parseInt(txtCod.getText()));
+        cliente.setNombre(txtNombre.getText());
+        cliente.setCedula(txtCed.getText());
+        cliente.setDirecion(txtDir.getText());
+        cliente.setTelefono(txtTelf.getText());
+        contCliente.create(cliente);
+        JOptionPane.showMessageDialog(this, "Cliente creado correctamente", "Crear Cliente", JOptionPane.OK_OPTION);
+        
+        //volver a establecer codigo
+        //limpiar cajas de texto
+        txtCod.setText(String.valueOf(this.contCliente.getCodigo()));
+        txtNombre.setText("");
+        txtCed.setText("");
+        txtDir.setText("");
+        txtTelf.setText("");
+        
+        
+    }//GEN-LAST:event_btnCrearActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnCrear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
