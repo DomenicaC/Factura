@@ -20,7 +20,7 @@ public class ControladorCliente {
     public ControladorCliente() {
         lista= new HashSet<>();
         
-        codigo = 1;
+        codigo = 0;
     }
 
     public int getCodigo() {
@@ -72,4 +72,9 @@ public class ControladorCliente {
             System.out.println(cli.getNombre());
         }
     }
+
+    public Set<Cliente> getLista() {
+        return lista;
+    }
+    
 }

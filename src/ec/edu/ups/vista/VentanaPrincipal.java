@@ -174,7 +174,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarMenuItemActionPerformed
 
     private void imprimirMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        ListaClientes listar = new ListaClientes(contCliente);//crear
+        listar.setVisible(true);
+        desktopPane.add(listar);
+        jlbTitulo.setVisible(false);
     }//GEN-LAST:event_imprimirMenuItem1ActionPerformed
 
     private void crearMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearMenuItemActionPerformed
