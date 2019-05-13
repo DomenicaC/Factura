@@ -5,7 +5,7 @@
  */
 package ec.edu.ups.controladores;
 
-import ec.edu.ups.Modelo.Cliente;
+import ec.edu.ups.Modelo.Producto;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,16 +13,15 @@ import java.util.Set;
  *
  * @author Domenica Cañizares
  */
-public class ControladorCliente {
-    private Set<Cliente> lista;
+public class ControladorProducto {
+    private Set<Producto> lista;
     private int codigo;
 
-    public ControladorCliente() {
+    public ControladorProducto() {
         lista= new HashSet<>();
-        
         codigo = 1;
     }
-
+    
     public int getCodigo() {
         return codigo;
     }
@@ -32,24 +31,24 @@ public class ControladorCliente {
     }
     
     //crear un num=evo objeto en la lista
-    public void create(Cliente objeto){
+    public void create(Producto objeto){
         codigo ++;
         objeto.setCodigo(codigo);
         lista.add(objeto);
     }
         
     //leer un objeto en la lista por medio del codigo
-    public Cliente read(int codigo){
-        for (Cliente cli : lista) {
-            if (cli.getCodigo() == codigo) {
-                return cli;
+    public Producto read(int codigo){
+        for (Producto prod : lista) {
+            if (prod.getCodigo() == codigo) {
+                return prod;
             }
         }
         return null;
     }
     
     //modificar un objeto en la lista por medio del codigo
-    public void update(Cliente objeto){
+    public void update(Producto objeto){
         if(lista.contains(objeto)){
             lista.remove(objeto);
             lista.add(objeto);
@@ -58,9 +57,9 @@ public class ControladorCliente {
     
     //eliminar un objeto por medio del codigo
     public void delete(int codigo){
-        for (Cliente cli : lista) {
-            if (cli.getCodigo() == codigo){
-                lista.remove(cli);
+        for (Producto prod : lista) {
+            if (prod.getCodigo() == codigo){
+                lista.remove(prod);
                 break;
             }
         }
@@ -68,8 +67,8 @@ public class ControladorCliente {
     
     //imprime todos los objetos de la lista
     public void print(){
-        for (Cliente cli : lista) {
-            System.out.println(cli.getNombre());
+        for (Producto prod : lista) {
+            System.out.println(prod.getNombre());
         }
     }
 }
