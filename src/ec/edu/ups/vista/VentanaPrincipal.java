@@ -6,6 +6,7 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controladores.ControladorCliente;
+import ec.edu.ups.controladores.ControladorProducto;
 
 /**
  *
@@ -14,6 +15,7 @@ import ec.edu.ups.controladores.ControladorCliente;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     private ControladorCliente contCliente;
+    private ControladorProducto contProducto;
     
     //cotroladores
     
@@ -50,13 +52,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         eliminarMenuItem = new javax.swing.JMenuItem();
         imprimirMenuItem1 = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
+        crearPMenuItem = new javax.swing.JMenuItem();
+        buscarPMenuItem = new javax.swing.JMenuItem();
+        modificarPMenuItem = new javax.swing.JMenuItem();
+        eliminarPMenuItem = new javax.swing.JMenuItem();
+        listarPMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
-        contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
+        crearFMenuItem = new javax.swing.JMenuItem();
+        modificarFMenuItem = new javax.swing.JMenuItem();
+        buscarFMenuItem = new javax.swing.JMenuItem();
+        eliminarFMenuItem = new javax.swing.JMenuItem();
+        listarFMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,36 +126,102 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         menuBar.add(fileMenu);
 
         editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        editMenu.setText("Producto");
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
+        crearPMenuItem.setMnemonic('t');
+        crearPMenuItem.setText("Crear Producto");
+        crearPMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearPMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(crearPMenuItem);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
+        buscarPMenuItem.setMnemonic('y');
+        buscarPMenuItem.setText("Buscar Producto");
+        buscarPMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarPMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(buscarPMenuItem);
 
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
+        modificarPMenuItem.setMnemonic('p');
+        modificarPMenuItem.setText("Modificar Producto");
+        modificarPMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarPMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(modificarPMenuItem);
 
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
+        eliminarPMenuItem.setMnemonic('d');
+        eliminarPMenuItem.setText("Eliminar Producto");
+        eliminarPMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarPMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(eliminarPMenuItem);
+
+        listarPMenuItem.setMnemonic('d');
+        listarPMenuItem.setText("Listar Productos");
+        listarPMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarPMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(listarPMenuItem);
 
         menuBar.add(editMenu);
 
         helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        helpMenu.setText("Factura");
 
-        contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
+        crearFMenuItem.setMnemonic('t');
+        crearFMenuItem.setText("Crear Factura");
+        crearFMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearFMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(crearFMenuItem);
 
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
+        modificarFMenuItem.setMnemonic('p');
+        modificarFMenuItem.setText("Modificar Factura");
+        modificarFMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarFMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(modificarFMenuItem);
+
+        buscarFMenuItem.setMnemonic('y');
+        buscarFMenuItem.setText("Buscar Factura");
+        buscarFMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarFMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(buscarFMenuItem);
+
+        eliminarFMenuItem.setMnemonic('d');
+        eliminarFMenuItem.setText("Eliminar Factura");
+        eliminarFMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarFMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(eliminarFMenuItem);
+
+        listarFMenuItem.setMnemonic('d');
+        listarFMenuItem.setText("Listar Factura");
+        listarFMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarFMenuItemActionPerformed(evt);
+            }
+        });
+        helpMenu.add(listarFMenuItem);
 
         menuBar.add(helpMenu);
 
@@ -205,6 +277,76 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_buscarMenuItemActionPerformed
 
+    private void crearPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPMenuItemActionPerformed
+        ProductoCrear crearP = new ProductoCrear(/*contProducto*/);//crear
+        crearP.setVisible(true);
+        desktopPane.add(crearP);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_crearPMenuItemActionPerformed
+
+    private void crearFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearFMenuItemActionPerformed
+        CrearFactura listarF = new CrearFactura();//crear
+        listarF.setVisible(true);
+        desktopPane.add(listarF);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_crearFMenuItemActionPerformed
+
+    private void buscarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPMenuItemActionPerformed
+        ProductoBuscar buscarP = new ProductoBuscar(/*contProducto*/);//crear
+        buscarP.setVisible(true);
+        desktopPane.add(buscarP);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_buscarPMenuItemActionPerformed
+
+    private void modificarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPMenuItemActionPerformed
+        ProductoModificar modP = new ProductoModificar(/*contProducto*/);//crear
+        modP.setVisible(true);
+        desktopPane.add(modP);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_modificarPMenuItemActionPerformed
+
+    private void eliminarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPMenuItemActionPerformed
+        ProductoEliminar eliminarP = new ProductoEliminar(/*contProducto*/);//crear
+        eliminarP.setVisible(true);
+        desktopPane.add(eliminarP);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_eliminarPMenuItemActionPerformed
+
+    private void listarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPMenuItemActionPerformed
+        ProductoListar listarP = new ProductoListar(/*contProducto*/);//crear
+        listarP.setVisible(true);
+        desktopPane.add(listarP);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_listarPMenuItemActionPerformed
+
+    private void modificarFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarFMenuItemActionPerformed
+        ModificarFactura modF = new ModificarFactura();//modificar
+        modF.setVisible(true);
+        desktopPane.add(modF);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_modificarFMenuItemActionPerformed
+
+    private void buscarFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFMenuItemActionPerformed
+        BuscarFactura buscarF = new BuscarFactura();//buscar
+        buscarF.setVisible(true);
+        desktopPane.add(buscarF);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_buscarFMenuItemActionPerformed
+
+    private void eliminarFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarFMenuItemActionPerformed
+        EliminarFactura eliF = new EliminarFactura();//eliminar
+        eliF.setVisible(true);
+        desktopPane.add(eliF);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_eliminarFMenuItemActionPerformed
+
+    private void listarFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarFMenuItemActionPerformed
+        ListarFactura listarF = new ListarFactura();//eliminar
+        listarF.setVisible(true);
+        desktopPane.add(listarF);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_listarFMenuItemActionPerformed
+
     
     
     
@@ -244,23 +386,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem buscarFMenuItem;
     private javax.swing.JMenuItem buscarMenuItem;
-    private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
+    private javax.swing.JMenuItem buscarPMenuItem;
+    private javax.swing.JMenuItem crearFMenuItem;
     private javax.swing.JMenuItem crearMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
+    private javax.swing.JMenuItem crearPMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
+    private javax.swing.JMenuItem eliminarFMenuItem;
     private javax.swing.JMenuItem eliminarMenuItem;
+    private javax.swing.JMenuItem eliminarPMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenuItem imprimirMenuItem1;
     private javax.swing.JLabel jlbTitulo;
+    private javax.swing.JMenuItem listarFMenuItem;
+    private javax.swing.JMenuItem listarPMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem modificarAsMenuItem;
-    private javax.swing.JMenuItem pasteMenuItem;
+    private javax.swing.JMenuItem modificarFMenuItem;
+    private javax.swing.JMenuItem modificarPMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
