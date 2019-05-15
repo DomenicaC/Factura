@@ -6,6 +6,7 @@
 package ec.edu.ups.controladores;
 
 import ec.edu.ups.Modelo.Factura;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -13,54 +14,64 @@ import java.util.Set;
  * @author Domenica Cañizares
  */
 public class ControladorFactura {
+    
+    private Set<Factura> lista;
     private int codigo;
+
+    public int getCodigo() {
+        return codigo;
+    }
+    
     public ControladorFactura() {
+        lista= new HashSet<>();
         codigo = 0;
     }
-    /*
+    
     //crear un num=evo objeto en la lista
     public void create(Factura objeto){
         codigo ++;
-        //objeto.setCodigo(codigo);
-        //lista.add(objeto);
+        objeto.setCodigo(codigo);
+        lista.add(objeto);
     }
         
     //leer un objeto en la lista por medio del codigo
-    public Factura read(int codigo){
+    public Factura read(int ced){
         for (Factura fac : lista) {
-            if (cli.getCodigo() == codigo) {
-                return cli;
+            if (fac.getCodigo() == ced) {
+                return fac;
             }
         }
         return null;
     }
     
     //modificar un objeto en la lista por medio del codigo
-    public void update(Factura objeto){
+    public ControladorFactura update(Factura objeto){
         if(lista.contains(objeto)){
             lista.remove(objeto);
             lista.add(objeto);
         }
+        return null;
     }
     
     //eliminar un objeto por medio del codigo
-    public void delete(int codigo){
+    public ControladorFactura delete(int codigo){
         for (Factura fac : lista) {
             if (fac.getCodigo() == codigo){
                 lista.remove(fac);
                 break;
             }
         }
+        return null;
     }
     
     //imprime todos los objetos de la lista
     public void print(){
-        for (Cliente cli : lista) {
-            System.out.println(cli.getNombre());
+        for (Factura fac : lista) {
+            System.out.println(fac.getCodigo());
         }
     }
 
-    public Set<Cliente> getLista() {
+    public Set<Factura> getLista() {
         return lista;
-    }*/
+    }
 }

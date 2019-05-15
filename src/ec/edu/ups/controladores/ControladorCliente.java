@@ -47,6 +47,15 @@ public class ControladorCliente {
         return null;
     }
     
+    public Cliente readC(String ced){
+        for (Cliente cliC : lista) {
+            if(cliC.getCedula() == ced){
+                return cliC;
+            }
+        }
+        return null;
+    }
+    
     //modificar un objeto en la lista por medio del codigo
     public ControladorCliente update(Cliente objeto){
         if(lista.contains(objeto)){

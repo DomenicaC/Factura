@@ -352,7 +352,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_crearPMenuItemActionPerformed
 
     private void crearFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearFMenuItemActionPerformed
-        CrearFactura crearF = new CrearFactura();//crear
+        CrearFactura crearF = new CrearFactura(contFact);//crear
         crearF.setVisible(true);
         desktopPane.add(crearF);
         jlbTitulo.setVisible(false);

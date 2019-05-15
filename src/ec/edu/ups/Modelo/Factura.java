@@ -24,6 +24,43 @@ public class Factura {
         this.descuento = descuento;
         this.codigo = codigo;
     }
+
+    public double getIva() {
+        return iva;
+    }
+
+    public void setIva(double iva) {
+        this.iva = iva;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(double descuento) {
+        this.descuento = descuento;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    @Override
+    public String toString() {
+        return "Factura{" + "iva=" + iva + ", total=" + total + ", descuento=" + descuento + ", codigo=" + codigo + '}';
+    }
     
     
 }
