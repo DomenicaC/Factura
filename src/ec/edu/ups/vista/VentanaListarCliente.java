@@ -14,14 +14,14 @@ import java.util.Set;
  *
  * @author Domenica Cañizares
  */
-public class ListaClientes extends javax.swing.JInternalFrame {
+public class VentanaListarCliente extends javax.swing.JInternalFrame {
 
     private ControladorCliente contCliente;
 
     /**
      * Creates new form ListaClientes
      */
-    public ListaClientes(ControladorCliente contCliente) {
+    public VentanaListarCliente(ControladorCliente contCliente) {
         initComponents();
         this.contCliente = contCliente;
         llenarDatos();

@@ -5,7 +5,9 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.Modelo.Cliente;
 import ec.edu.ups.controladores.ControladorCliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,7 +20,7 @@ public class VentanaModificarCliente extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaModificarCliente
      */
-    public VentanaModificarCliente() {
+    public VentanaModificarCliente(ControladorCliente contCliente) {
         initComponents();
         this.contCliente = contCliente;
     }
@@ -44,12 +46,14 @@ public class VentanaModificarCliente extends javax.swing.JInternalFrame {
         txtTelf = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         btnAct = new javax.swing.JButton();
+        btnBuscarM = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setEnabled(false);
 
-        txtCod.setEditable(false);
         txtCod.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        txtCod.setEnabled(false);
 
         txtNombre.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
 
@@ -85,6 +89,13 @@ public class VentanaModificarCliente extends javax.swing.JInternalFrame {
             }
         });
 
+        btnBuscarM.setText("Buscar");
+        btnBuscarM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarMActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -112,21 +123,27 @@ public class VentanaModificarCliente extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(btnAct, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnBuscarM)
+                .addGap(32, 32, 32))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(55, 55, 55)
                     .addComponent(jLabel1)
                     .addGap(75, 75, 75)
                     .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(58, Short.MAX_VALUE)))
+                    .addContainerGap(119, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGap(27, 27, 27)
+                .addComponent(btnBuscarM)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -160,12 +177,42 @@ public class VentanaModificarCliente extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActActionPerformed
+        Cliente clienteM = new Cliente();
         
+        System.out.println(clienteM.getCodigo());
+        //clienteM.setCodigo(Integer.parseInt(txtCod.getText()));
+        clienteM.setNombre(txtNombre.getText());
+        clienteM.setCedula(txtCed.getText());
+        clienteM.setDirecion(txtDir.getText());
+        clienteM.setTelefono(txtTelf.getText());
+        contCliente.update(clienteM);
+        JOptionPane.showMessageDialog(this, "Cliente modificado correctamente", "Crear Cliente", JOptionPane.OK_OPTION);
+
+        
+        //limpiar cajas de texto
+        txtCod.setText("");
+        txtNombre.setText("");
+        txtCed.setText("");
+        txtDir.setText("");
+        txtTelf.setText("");
     }//GEN-LAST:event_btnActActionPerformed
+
+    private void btnBuscarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMActionPerformed
+        int codigo = Integer.parseInt(txtCod.getText());
+        Cliente buscarM = contCliente.read(codigo);
+        // contCliente.update(buscarM);
+        System.out.println(buscarM);
+        txtNombre.setText(buscarM.getNombre());
+        txtCed.setText(buscarM.getCedula());
+        txtDir.setText(buscarM.getDirecion());
+        txtTelf.setText(buscarM.getTelefono());
+       
+    }//GEN-LAST:event_btnBuscarMActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAct;
+    private javax.swing.JButton btnBuscarM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

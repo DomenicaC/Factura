@@ -19,7 +19,6 @@ public class ControladorCliente {
 
     public ControladorCliente() {
         lista= new HashSet<>();
-        
         codigo = 0;
     }
 
@@ -49,21 +48,23 @@ public class ControladorCliente {
     }
     
     //modificar un objeto en la lista por medio del codigo
-    public void update(Cliente objeto){
+    public ControladorCliente update(Cliente objeto){
         if(lista.contains(objeto)){
             lista.remove(objeto);
             lista.add(objeto);
         }
+        return null;
     }
     
     //eliminar un objeto por medio del codigo
-    public void delete(int codigo){
+    public ControladorCliente delete(int codigo){
         for (Cliente cli : lista) {
             if (cli.getCodigo() == codigo){
                 lista.remove(cli);
                 break;
             }
         }
+        return null;
     }
     
     //imprime todos los objetos de la lista

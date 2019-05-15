@@ -5,19 +5,45 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.Modelo.Producto;
+import ec.edu.ups.controladores.ControladorProducto;
+import javax.swing.table.DefaultTableModel;
+import java.util.Set;
+
 /**
  *
  * @author Domenica Cañizares
  */
 public class ProductoListar extends javax.swing.JInternalFrame {
 
+    private ControladorProducto contProd;
+    
+    
     /**
      * Creates new form ProductoListar
      */
-    public ProductoListar() {
+    public ProductoListar(ControladorProducto contProd) {
         initComponents();
+        this.contProd = contProd;
+        llenarDatosP();
     }
 
+    public void llenarDatosP(){
+        DefaultTableModel modeloP = (DefaultTableModel) tblProducto.getModel();
+        Set<Producto> lista = contProd.getLista();
+        
+        for (Producto prod : lista) {
+            Object[] datosP = {prod.getCodigo(),
+                prod.getNombre(),
+                prod.getDescripcion(),
+                prod.getPrecio(),
+                prod.getCantidad(),
+                prod.getSubtotalP()};
+            modeloP.addRow(datosP);
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,17 +54,21 @@ public class ProductoListar extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCliente = new javax.swing.JTable();
+        tblProducto = new javax.swing.JTable();
 
-        tblCliente.setModel(new javax.swing.table.DefaultTableModel(
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+
+        tblProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Nombre", "Descripcion", "Precio"
+                "Codigo", "Cantidad", "Nombre", "Descripcion", "Precio", "Subtotall"
             }
         ));
-        jScrollPane1.setViewportView(tblCliente);
+        jScrollPane1.setViewportView(tblProducto);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,6 +93,6 @@ public class ProductoListar extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCliente;
+    private javax.swing.JTable tblProducto;
     // End of variables declaration//GEN-END:variables
 }

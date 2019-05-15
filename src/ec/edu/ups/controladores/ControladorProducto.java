@@ -19,7 +19,7 @@ public class ControladorProducto {
 
     public ControladorProducto() {
         lista= new HashSet<>();
-        codigo = 1;
+        codigo = 0;
     }
     
     public int getCodigo() {
@@ -70,5 +70,9 @@ public class ControladorProducto {
         for (Producto prod : lista) {
             System.out.println(prod.getNombre());
         }
+    }
+    
+    public Set<Producto> getLista() {
+        return lista;
     }
 }

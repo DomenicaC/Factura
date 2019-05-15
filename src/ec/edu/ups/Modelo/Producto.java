@@ -15,19 +15,19 @@ public class Producto {
     private String descripcion;
     private int cantidad;
     private double precio;
-    private double subtotal;
+    private double subtotalP;
 
     public Producto() {
     }
     
     //constructor
-    public Producto(int codigo, String nombre, String descripcion, int cantidad, double precio, double subtotal) {
+    public Producto(int codigo, String nombre, String descripcion, int cantidad, double precio, double subtotalP) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.precio = precio;
-        this.subtotal = subtotal;
+        this.subtotalP = subtotalP;
     }
 
     //set
@@ -51,8 +51,8 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+    public void setSubtotalP(double subtotalP) {
+        this.subtotalP = subtotalP;
     }
     
 
@@ -77,8 +77,8 @@ public class Producto {
         return cantidad;
     }
 
-    public double getSubtotal() {
-        return subtotal;
+    public double getSubtotalP() {
+        return subtotalP;
     }
     
 
@@ -109,7 +109,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", cantidad=" + cantidad + ", precio=" + precio + ", subtotal=" + subtotal + '}';
+        return "Producto{" + "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", cantidad=" + cantidad + ", precio=" + precio + ", subtotalP=" + subtotalP + '}';
     }
     
     

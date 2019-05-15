@@ -23,7 +23,7 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
     public VentanaCrearCliente(ControladorCliente contCliente) {
         initComponents();
         this.contCliente = contCliente;
-        txtCod.setText(String.valueOf(this.contCliente.getCodigo()+1));
+        txtCod.setText(String.valueOf(this.contCliente.getCodigo()));
     }
 
     /**

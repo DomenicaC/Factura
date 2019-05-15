@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     private ControladorCliente contCliente;
-    private ControladorProducto contProducto;
+    private ControladorProducto contProd;
     private ControladorFactura contFact;
     private Locale localizacion;
     private ResourceBundle mensajes;
@@ -32,13 +32,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         contCliente = new ControladorCliente();
-        contProducto = new ControladorProducto();
+        contProd = new ControladorProducto();
         contFact = new ControladorFactura();
         
         System.out.println("Localizacion por defecto: "+Locale.getDefault().getLanguage());
         
         localizacion = new Locale("es","EC");
-        //Locale.setDefault(localizacion);
+        Locale.setDefault(localizacion);
         System.out.println("Localizacion Forzada: "+Locale.getDefault().getLanguage());
         
         mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", Locale.getDefault());
@@ -313,7 +313,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarMenuItemActionPerformed
 
     private void listarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarMenuItemActionPerformed
-        ListaClientes listar = new ListaClientes(contCliente);//crear
+        VentanaListarCliente listar = new VentanaListarCliente(contCliente);//crear
         listar.setVisible(true);
         desktopPane.add(listar);
         jlbTitulo.setVisible(false);
@@ -328,7 +328,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_crearMenuItemActionPerformed
 
     private void modificarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarMenuItemActionPerformed
-        VentanaModificarCliente mod = new VentanaModificarCliente(/*contCliente*/);//crear
+        VentanaModificarCliente mod = new VentanaModificarCliente(contCliente);//crear
         mod.setVisible(true);
         desktopPane.add(mod);
         jlbTitulo.setVisible(false);
@@ -345,21 +345,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarMenuItemActionPerformed
 
     private void crearPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPMenuItemActionPerformed
-        ProductoCrear crearP = new ProductoCrear(/*contProducto*/);//crear
+        ProductoCrear crearP = new ProductoCrear(contProd);//crear
         crearP.setVisible(true);
         desktopPane.add(crearP);
         jlbTitulo.setVisible(false);
     }//GEN-LAST:event_crearPMenuItemActionPerformed
 
     private void crearFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearFMenuItemActionPerformed
-        CrearFactura listarF = new CrearFactura();//crear
-        listarF.setVisible(true);
-        desktopPane.add(listarF);
+        CrearFactura crearF = new CrearFactura();//crear
+        crearF.setVisible(true);
+        desktopPane.add(crearF);
         jlbTitulo.setVisible(false);
     }//GEN-LAST:event_crearFMenuItemActionPerformed
 
     private void buscarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPMenuItemActionPerformed
-        ProductoBuscar buscarP = new ProductoBuscar(/*contProducto*/);//crear
+        ProductoBuscar buscarP = new ProductoBuscar(contProd);//crear
         buscarP.setVisible(true);
         desktopPane.add(buscarP);
         jlbTitulo.setVisible(false);
@@ -380,7 +380,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarPMenuItemActionPerformed
 
     private void listarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPMenuItemActionPerformed
-        ProductoListar listarP = new ProductoListar(/*contProducto*/);//crear
+        ProductoListar listarP = new ProductoListar(contProd);//crear
         listarP.setVisible(true);
         desktopPane.add(listarP);
         jlbTitulo.setVisible(false);
