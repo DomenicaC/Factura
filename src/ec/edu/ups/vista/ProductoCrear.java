@@ -176,7 +176,7 @@ public class ProductoCrear extends javax.swing.JInternalFrame {
         System.out.println(prod.getCodigo());
         prod.setCodigo(Integer.parseInt(txtCodP.getText()));
         prod.setNombre(txtNomP.getText());
-        prod.setPrecio(Integer.parseInt(txtPrecioP.getText()));
+        prod.setPrecio(Double.parseDouble(txtPrecioP.getText()));
         contProd.create(prod);
         JOptionPane.showMessageDialog(this, "Producto creado correctamente", "Crear Cliente", JOptionPane.OK_OPTION);
 

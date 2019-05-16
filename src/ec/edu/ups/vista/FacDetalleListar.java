@@ -5,29 +5,25 @@
  */
 package ec.edu.ups.vista;
 
-import ec.edu.ups.Modelo.Producto;
-import ec.edu.ups.controladores.ControladorProducto;
-import javax.swing.table.DefaultTableModel;
-import java.util.Set;
+import ec.edu.ups.controladores.ControladorFacDetalle;
 
 /**
  *
  * @author Domenica Cañizares
  */
-public class ProductoListar extends javax.swing.JInternalFrame {
+public class FacDetalleListar extends javax.swing.JInternalFrame {
 
-    private ControladorProducto contProd;
-    public static String x;
-    
     /**
-     * Creates new form ProductoListar
+     * Creates new form FacDetalleListar
      */
-    public ProductoListar(ControladorProducto contProd) {
+    
+    public static String x;
+    private ControladorFacDetalle contFacD;
+    
+    public FacDetalleListar(ControladorFacDetalle contFacD) {
         initComponents();
         x="x";
-        
-        this.contProd = contProd;
-        llenarDatosP();
+        this.contFacD = contFacD;
         
         //centrar ventana
         int a = VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
@@ -38,19 +34,6 @@ public class ProductoListar extends javax.swing.JInternalFrame {
         setVisible(true);
     }
 
-    public void llenarDatosP(){
-        DefaultTableModel modeloP = (DefaultTableModel) tblProducto.getModel();
-        Set<Producto> lista = contProd.getLista();
-        
-        for (Producto prod : lista) {
-            Object[] datosP = {prod.getCodigo(),
-                prod.getNombre(),
-                prod.getPrecio()};
-            modeloP.addRow(datosP);
-        }
-    }
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,11 +44,23 @@ public class ProductoListar extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblProducto = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
-        setClosable(true);
-        setIconifiable(true);
-        setMaximizable(true);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -84,43 +79,45 @@ public class ProductoListar extends javax.swing.JInternalFrame {
             }
         });
 
-        tblProducto.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Nombre", "Precio"
+                "Codigo", "Cantidad", "Total"
             }
         ));
-        jScrollPane1.setViewportView(tblProducto);
+        jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-        x=null;
+x=null;
     }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblProducto;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }

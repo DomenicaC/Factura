@@ -5,6 +5,7 @@
  */
 package ec.edu.ups.controladores;
 
+import ec.edu.ups.Modelo.FacturaDetalle;
 import ec.edu.ups.Modelo.Producto;
 import java.util.HashSet;
 import java.util.Set;
@@ -84,5 +85,9 @@ public class ControladorProducto {
 
     public Set<Producto> getLista() {
         return lista;
+    }
+
+    public void create(FacturaDetalle facD) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

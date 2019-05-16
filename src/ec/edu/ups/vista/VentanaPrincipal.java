@@ -6,6 +6,7 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controladores.ControladorCliente;
+import ec.edu.ups.controladores.ControladorFacDetalle;
 import ec.edu.ups.controladores.ControladorFactura;
 import ec.edu.ups.controladores.ControladorProducto;
 import java.util.Locale;
@@ -22,6 +23,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorCliente contCliente;
     private ControladorProducto contProd;
     private ControladorFactura contFact;
+    private ControladorFacDetalle contFacD;
     private Locale localizacion;
     private ResourceBundle mensajes;
     
@@ -40,6 +42,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         contCliente = new ControladorCliente();
         contProd = new ControladorProducto();
         contFact = new ControladorFactura();
+        contFacD = new ControladorFacDetalle();
 
         setExtendedState(MAXIMIZED_BOTH);
 
@@ -89,7 +92,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         eliminarPMenuItem = new javax.swing.JMenuItem();
         listarPMenuItem = new javax.swing.JMenuItem();
         FacDeMenu = new javax.swing.JMenu();
-        btnCrear = new javax.swing.JMenuItem();
+        crearFDMenuItem = new javax.swing.JMenuItem();
+        buscarFDMenuItem = new javax.swing.JMenuItem();
+        modFDMenuItem = new javax.swing.JMenuItem();
+        eliFDMenuItemr3 = new javax.swing.JMenuItem();
+        listarFDMenuItem = new javax.swing.JMenuItem();
         facMenu = new javax.swing.JMenu();
         crearFMenuItem = new javax.swing.JMenuItem();
         modificarFMenuItem = new javax.swing.JMenuItem();
@@ -231,14 +238,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         FacDeMenu.setText("Factura Detalle");
 
-        btnCrear.setText("Crear");
-        btnCrear.setToolTipText("");
-        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+        crearFDMenuItem.setText("Crear");
+        crearFDMenuItem.setToolTipText("");
+        crearFDMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCrearActionPerformed(evt);
+                crearFDMenuItemActionPerformed(evt);
             }
         });
-        FacDeMenu.add(btnCrear);
+        FacDeMenu.add(crearFDMenuItem);
+
+        buscarFDMenuItem.setText("Buscar");
+        buscarFDMenuItem.setToolTipText("");
+        buscarFDMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarFDMenuItemActionPerformed(evt);
+            }
+        });
+        FacDeMenu.add(buscarFDMenuItem);
+
+        modFDMenuItem.setText("Modificar");
+        modFDMenuItem.setToolTipText("");
+        modFDMenuItem.setActionCommand("Modificar");
+        modFDMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modFDMenuItemActionPerformed(evt);
+            }
+        });
+        FacDeMenu.add(modFDMenuItem);
+
+        eliFDMenuItemr3.setText("Eliminar");
+        eliFDMenuItemr3.setToolTipText("");
+        eliFDMenuItemr3.setActionCommand("Eliminar");
+        eliFDMenuItemr3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliFDMenuItemr3ActionPerformed(evt);
+            }
+        });
+        FacDeMenu.add(eliFDMenuItemr3);
+
+        listarFDMenuItem.setText("Listar");
+        listarFDMenuItem.setToolTipText("");
+        listarFDMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarFDMenuItemActionPerformed(evt);
+            }
+        });
+        FacDeMenu.add(listarFDMenuItem);
 
         menuBar.add(FacDeMenu);
 
@@ -587,11 +632,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.out.println("Localizacion Forzada: " + Locale.getDefault().getLanguage());
     }//GEN-LAST:event_espMenuItemActionPerformed
 
-    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+    private void crearFDMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearFDMenuItemActionPerformed
         String x = ListarFactura.x;
         try {
             if (x == null) {
-                FacDetalleCrear crearFD = new FacDetalleCrear(contProd);//crear
+                FacDetalleCrear crearFD = new FacDetalleCrear(contFacD);//crear
 
                 desktopPane.add(crearFD);
                 jlbTitulo.setVisible(false);
@@ -601,7 +646,71 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_btnCrearActionPerformed
+    }//GEN-LAST:event_crearFDMenuItemActionPerformed
+
+    private void buscarFDMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFDMenuItemActionPerformed
+        String x = ListarFactura.x;
+        try {
+            if (x == null) {
+                FacDetalleBuscar buscarFD = new FacDetalleBuscar(contFacD);//crear
+
+                desktopPane.add(buscarFD);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_buscarFDMenuItemActionPerformed
+
+    private void modFDMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modFDMenuItemActionPerformed
+        String x = ListarFactura.x;
+        try {
+            if (x == null) {
+                FacDetalleModificar modFD = new FacDetalleModificar(contFacD);//crear
+
+                desktopPane.add(modFD);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_modFDMenuItemActionPerformed
+
+    private void eliFDMenuItemr3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliFDMenuItemr3ActionPerformed
+        String x = ListarFactura.x;
+        try {
+            if (x == null) {
+                FacDetalleELiminar eliFD = new FacDetalleELiminar(contFacD);//crear
+
+                desktopPane.add(eliFD);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_eliFDMenuItemr3ActionPerformed
+
+    private void listarFDMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarFDMenuItemActionPerformed
+        String x = ListarFactura.x;
+        try {
+            if (x == null) {
+                FacDetalleListar listarFD = new FacDetalleListar(contFacD);//crear
+
+                desktopPane.add(listarFD);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_listarFDMenuItemActionPerformed
 
     public void cambiarIdioma() {
         mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", Locale.getDefault());
@@ -683,15 +792,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu FacDeMenu;
-    private javax.swing.JMenuItem btnCrear;
+    private javax.swing.JMenuItem buscarFDMenuItem;
     private javax.swing.JMenuItem buscarFMenuItem;
     private javax.swing.JMenuItem buscarMenuItem;
     private javax.swing.JMenuItem buscarPMenuItem;
     private javax.swing.JMenu clienteMenu;
+    private javax.swing.JMenuItem crearFDMenuItem;
     private javax.swing.JMenuItem crearFMenuItem;
     private javax.swing.JMenuItem crearMenuItem;
     private javax.swing.JMenuItem crearPMenuItem;
     public static javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuItem eliFDMenuItemr3;
     private javax.swing.JMenuItem eliminarFMenuItem;
     private javax.swing.JMenuItem eliminarMenuItem;
     private javax.swing.JMenuItem eliminarPMenuItem;
@@ -709,10 +820,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel jlbTitulo;
+    private javax.swing.JMenuItem listarFDMenuItem;
     private javax.swing.JMenuItem listarFMenuItem;
     private javax.swing.JMenuItem listarMenuItem;
     private javax.swing.JMenuItem listarPMenuItem;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem modFDMenuItem;
     private javax.swing.JMenuItem modificarFMenuItem;
     private javax.swing.JMenuItem modificarMenuItem;
     private javax.swing.JMenuItem modificarPMenuItem;

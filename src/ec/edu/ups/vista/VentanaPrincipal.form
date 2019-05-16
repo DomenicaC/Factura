@@ -184,13 +184,51 @@
             <Property name="text" type="java.lang.String" value="Factura Detalle"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="btnCrear">
+            <MenuItem class="javax.swing.JMenuItem" name="crearFDMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Crear"/>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crearFDMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="buscarFDMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Buscar"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarFDMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="modFDMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modificar"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="actionCommand" type="java.lang.String" value="Modificar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modFDMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="eliFDMenuItemr3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Eliminar"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="actionCommand" type="java.lang.String" value="Eliminar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliFDMenuItemr3ActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="listarFDMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Listar"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listarFDMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

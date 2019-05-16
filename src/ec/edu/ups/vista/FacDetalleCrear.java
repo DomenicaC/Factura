@@ -7,6 +7,7 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.Modelo.Producto;
 import ec.edu.ups.Modelo.FacturaDetalle;
+import ec.edu.ups.controladores.ControladorFacDetalle;
 import ec.edu.ups.controladores.ControladorProducto;
 import javax.swing.JOptionPane;
 
@@ -22,12 +23,15 @@ public class FacDetalleCrear extends javax.swing.JInternalFrame {
     
     public static String x;
     private ControladorProducto contProd;
+    private ControladorFacDetalle contFacD;
             
-    public FacDetalleCrear(ControladorProducto contProd) {
+    public FacDetalleCrear(ControladorFacDetalle contFacD) {
         initComponents();
-        x="x";
-        this.contProd = contProd;
         
+        this.contProd = contProd;
+        this.contFacD = contFacD;
+        
+        txtCodFD.setText(String.valueOf(this.contProd.getCodigo())+1);
         //centrar ventana
         int a = VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
         int b = VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
@@ -226,7 +230,7 @@ public class FacDetalleCrear extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrear)
                     .addComponent(btnCalcular))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
@@ -250,7 +254,17 @@ public class FacDetalleCrear extends javax.swing.JInternalFrame {
         facD.setCodigo(Integer.parseInt(txtCodFD.getText()));
         facD.setCantidad(Integer.parseInt(txtCant.getText()));
         facD.setTotal(Double.parseDouble(txtTot.getText()));
+        contProd.create(facD);
         
+        JOptionPane.showMessageDialog(this, "Producto creado correctamente");
+        
+        txtCodFD.setText(String.valueOf(this.contProd.getCodigo()));
+        txtCant.setText("");
+        txtCodFD.setText("");
+        txtCodP.setText("");
+        txtNomP.setText("");
+        txtPrecioP.setText("");
+        txtTot.setText("");
         
     }//GEN-LAST:event_btnCrearActionPerformed
 
