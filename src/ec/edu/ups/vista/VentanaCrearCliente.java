@@ -56,16 +56,16 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblCodC = new javax.swing.JLabel();
         txtCod = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        lblNomC = new javax.swing.JLabel();
         txtCed = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblCedC = new javax.swing.JLabel();
         txtDir = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblDirC = new javax.swing.JLabel();
         txtTelf = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        lblTelC = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btnCrear = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
@@ -92,9 +92,9 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel1.setText("Codigo");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 61, -1, -1));
+        lblCodC.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        lblCodC.setText("Codigo");
+        getContentPane().add(lblCodC, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 61, -1, -1));
 
         txtCod.setEditable(false);
         txtCod.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -104,30 +104,30 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
         txtNombre.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 140, -1));
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel2.setText("Nombre");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+        lblNomC.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        lblNomC.setText("Nombre");
+        getContentPane().add(lblNomC, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
         txtCed.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         getContentPane().add(txtCed, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 140, -1));
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel3.setText("Cedula");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
+        lblCedC.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        lblCedC.setText("Cedula");
+        getContentPane().add(lblCedC, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, -1, -1));
 
         txtDir.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         getContentPane().add(txtDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 210, 140, -1));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel4.setText("Direccion");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
+        lblDirC.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        lblDirC.setText("Direccion");
+        getContentPane().add(lblDirC, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, -1, -1));
 
         txtTelf.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         getContentPane().add(txtTelf, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 140, -1));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jLabel5.setText("Telefono");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+        lblTelC.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        lblTelC.setText("Telefono");
+        getContentPane().add(lblTelC, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel6.setText("Nuevo Cliente");
@@ -188,12 +188,12 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnCrear;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lblCedC;
+    private javax.swing.JLabel lblCodC;
+    private javax.swing.JLabel lblDirC;
+    private javax.swing.JLabel lblNomC;
+    private javax.swing.JLabel lblTelC;
     private javax.swing.JTextField txtCed;
     private javax.swing.JTextField txtCod;
     private javax.swing.JTextField txtDir;

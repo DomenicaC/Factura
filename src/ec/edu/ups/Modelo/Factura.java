@@ -7,7 +7,6 @@ package ec.edu.ups.Modelo;
 
 import java.util.List;
 import java.util.Date;
-import ec.edu.ups.Modelo.FacturaDetalle;
 import java.util.ArrayList;
 
 /**
@@ -25,8 +24,12 @@ public class Factura{
 
     public Factura() {
         detalle = new ArrayList<>();
+        fecha = new Date();
     }
 
+    
+    
+    
     public Factura(double iva, double total, double descuento, int ruc, Date fecha, Cliente cliente, List<FacturaDetalle> detalle) {
         this.iva = iva;
         this.total = total;

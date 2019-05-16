@@ -24,6 +24,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorFactura contFact;
     private Locale localizacion;
     private ResourceBundle mensajes;
+    
+    
+    
+    
+    
+    
 
     /**
      * Creates new form VentanaPrincipal
@@ -627,6 +633,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         idiomaMenu.setText(mensajes.getString("menu.idioma"));
         inglesMenuItem.setText(mensajes.getString("menu.item.ingles"));
         espMenuItem.setText(mensajes.getString("menu.item.espa"));
+        
+        //crear cliente
+        String x = VentanaCrearCliente.x;
+        try {
+            if (x != null) {
+                
+            } 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
