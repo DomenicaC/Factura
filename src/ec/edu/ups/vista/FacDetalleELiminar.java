@@ -26,17 +26,17 @@ public class FacDetalleELiminar extends javax.swing.JInternalFrame {
 
     public FacDetalleELiminar(ControladorFacDetalle contFacD) {
         initComponents();
-        x="x";
+        x = "x";
         this.contProd = contProd;
         this.contFacD = contFacD;
-        
-        txtCodFD.setText(String.valueOf(this.contProd.getCodigo())+1);
+
+        txtCodFD.setText(String.valueOf(this.contProd.getCodigo()) + 1);
         //centrar ventana
-        int a = VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
-        int b = VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
-        
-        setLocation(a/2, b/2);
-        
+        int a = VentanaPrincipal.desktopPane.getWidth() - this.getWidth();
+        int b = VentanaPrincipal.desktopPane.getHeight() - this.getHeight();
+
+        setLocation(a / 2, b / 2);
+
         setVisible(true);
     }
 
@@ -63,6 +63,7 @@ public class FacDetalleELiminar extends javax.swing.JInternalFrame {
         txtTot = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtCodFD = new javax.swing.JTextField();
+        btnEliminar = new javax.swing.JButton();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -96,7 +97,6 @@ public class FacDetalleELiminar extends javax.swing.JInternalFrame {
         });
 
         txtNomP.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        txtNomP.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel4.setText("Precio Unitario");
@@ -122,7 +122,6 @@ public class FacDetalleELiminar extends javax.swing.JInternalFrame {
         jLabel6.setText("Total");
 
         txtTot.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        txtTot.setEnabled(false);
         txtTot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotActionPerformed(evt);
@@ -133,13 +132,31 @@ public class FacDetalleELiminar extends javax.swing.JInternalFrame {
         jLabel7.setText("Codigo FD");
 
         txtCodFD.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        txtCodFD.setEnabled(false);
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 502, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(213, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCodFD, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscarP)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnEliminar)
+                        .addGap(185, 185, 185))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -150,8 +167,7 @@ public class FacDetalleELiminar extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel3)
                                     .addGap(32, 32, 32)
                                     .addComponent(txtCodP, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnBuscarP))
+                                    .addGap(93, 93, 93))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel2)
@@ -160,21 +176,14 @@ public class FacDetalleELiminar extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(txtNomP, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(txtPrecioP, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(38, 38, 38)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGap(48, 48, 48)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel6))
-                                    .addGap(31, 31, 31)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtCant, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtTot, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtCodFD, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6))
+                            .addGap(31, 31, 31)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtCant, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTot, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(111, 111, 111)))
@@ -182,18 +191,23 @@ public class FacDetalleELiminar extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtCodFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarP))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addComponent(btnEliminar)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(51, 51, 51)
                     .addComponent(jLabel1)
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnBuscarP)
                         .addComponent(jLabel3)
-                        .addComponent(txtCodP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)
-                        .addComponent(txtCodFD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtCodP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(14, 14, 14)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
@@ -213,14 +227,15 @@ public class FacDetalleELiminar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPActionPerformed
-        int codigo = Integer.parseInt(txtCodP.getText());
-        Producto buscarP = contProd.read(codigo);
+        int codigo = Integer.parseInt(txtCodFD.getText());
+        FacturaDetalle buscarP = contFacD.read(codigo);
         System.out.println(buscarP);
         if (buscarP == null) {
             JOptionPane.showMessageDialog(null, "El codigo no existe");
         } else {
-            txtNomP.setText(buscarP.getNombre());
-            txtPrecioP.setText(String.valueOf(buscarP.getPrecio()));
+            txtCant.setText(String.valueOf(buscarP.getCantidad()));
+            txtTot.setText(String.valueOf(buscarP.getTotal()));
+            contFacD.delete(codigo);
         }
     }//GEN-LAST:event_btnBuscarPActionPerformed
 
@@ -233,12 +248,26 @@ public class FacDetalleELiminar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTotActionPerformed
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-x=null;
+        x = null;
     }//GEN-LAST:event_formInternalFrameClosing
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        FacturaDetalle eliFacD = new FacturaDetalle();
+        contFacD.delete(Integer.parseInt(txtCodFD.getText()));
+        JOptionPane.showMessageDialog(this, "Eliminado Correctamente");
+        
+        txtCant.setText("");
+        txtCodFD.setText("");
+        txtCodP.setText("");
+        txtNomP.setText("");
+        txtPrecioP.setText("");
+        txtTot.setText("");
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarP;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -26,12 +26,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorFacDetalle contFacD;
     private Locale localizacion;
     private ResourceBundle mensajes;
-    
-    
-    
-    
-    
-    
 
     /**
      * Creates new form VentanaPrincipal

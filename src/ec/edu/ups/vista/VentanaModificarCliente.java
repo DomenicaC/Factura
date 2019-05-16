@@ -385,6 +385,7 @@ public class VentanaModificarCliente extends javax.swing.JInternalFrame {
             txtCed.setText(buscarM.getCedula());
             txtDir.setText(buscarM.getDirecion());
             txtTelf.setText(buscarM.getTelefono());
+            contCliente.delete(codigo);
         }
     }//GEN-LAST:event_btnBuscarMActionPerformed
 

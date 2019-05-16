@@ -6,6 +6,9 @@
 package ec.edu.ups.vista;
 
 import ec.edu.ups.controladores.ControladorFacDetalle;
+import javax.swing.table.DefaultTableModel;
+import ec.edu.ups.Modelo.FacturaDetalle;
+import java.util.Set;
 
 /**
  *
@@ -16,22 +19,33 @@ public class FacDetalleListar extends javax.swing.JInternalFrame {
     /**
      * Creates new form FacDetalleListar
      */
-    
     public static String x;
     private ControladorFacDetalle contFacD;
-    
+
     public FacDetalleListar(ControladorFacDetalle contFacD) {
         initComponents();
-        x="x";
+        x = "x";
         this.contFacD = contFacD;
-        
+
         //centrar ventana
-        int a = VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
-        int b = VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
-        
-        setLocation(a/2, b/2);
-        
+        int a = VentanaPrincipal.desktopPane.getWidth() - this.getWidth();
+        int b = VentanaPrincipal.desktopPane.getHeight() - this.getHeight();
+
+        setLocation(a / 2, b / 2);
+
         setVisible(true);
+    }
+
+    public void llenarDatos() {
+        DefaultTableModel modelo = (DefaultTableModel) tblFacD.getModel();
+        
+        Set<FacturaDetalle> lista = contFacD.getLista();
+        for (FacturaDetalle facD : lista) {
+            Object[] datos = {facD.getCodigo(),
+                facD.getCantidad(),
+                facD.getTotal()};
+            modelo.addRow(datos);
+        }
     }
 
     /**
@@ -46,7 +60,7 @@ public class FacDetalleListar extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblFacD = new javax.swing.JTable();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,7 +93,7 @@ public class FacDetalleListar extends javax.swing.JInternalFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblFacD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -87,7 +101,7 @@ public class FacDetalleListar extends javax.swing.JInternalFrame {
                 "Codigo", "Cantidad", "Total"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tblFacD);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,7 +124,7 @@ public class FacDetalleListar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
-x=null;
+        x = null;
     }//GEN-LAST:event_formInternalFrameClosing
 
 
@@ -118,6 +132,6 @@ x=null;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblFacD;
     // End of variables declaration//GEN-END:variables
 }
