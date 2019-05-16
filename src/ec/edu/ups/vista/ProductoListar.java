@@ -35,10 +35,7 @@ public class ProductoListar extends javax.swing.JInternalFrame {
         for (Producto prod : lista) {
             Object[] datosP = {prod.getCodigo(),
                 prod.getNombre(),
-                prod.getDescripcion(),
-                prod.getPrecio(),
-                prod.getCantidad(),
-                prod.getSubtotalP()};
+                prod.getPrecio()};
             modeloP.addRow(datosP);
         }
     }

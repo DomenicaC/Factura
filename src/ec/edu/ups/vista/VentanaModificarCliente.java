@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class VentanaModificarCliente extends javax.swing.JInternalFrame {
 
     private ControladorCliente contCliente;
-    
+
     /**
      * Creates new form VentanaModificarCliente
      */
@@ -178,7 +178,7 @@ public class VentanaModificarCliente extends javax.swing.JInternalFrame {
 
     private void btnActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActActionPerformed
         Cliente clienteM = new Cliente();
-        
+
         System.out.println(clienteM.getCodigo());
         //clienteM.setCodigo(Integer.parseInt(txtCod.getText()));
         clienteM.setNombre(txtNombre.getText());
@@ -188,7 +188,7 @@ public class VentanaModificarCliente extends javax.swing.JInternalFrame {
         contCliente.update(clienteM);
         JOptionPane.showMessageDialog(this, "Cliente modificado correctamente", "Crear Cliente", JOptionPane.OK_OPTION);
 
-        
+        System.out.println(clienteM);
         //limpiar cajas de texto
         txtCod.setText("");
         txtNombre.setText("");
@@ -200,13 +200,15 @@ public class VentanaModificarCliente extends javax.swing.JInternalFrame {
     private void btnBuscarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMActionPerformed
         int codigo = Integer.parseInt(txtCod.getText());
         Cliente buscarM = contCliente.read(codigo);
-        // contCliente.update(buscarM);
-        System.out.println(buscarM);
-        txtNombre.setText(buscarM.getNombre());
-        txtCed.setText(buscarM.getCedula());
-        txtDir.setText(buscarM.getDirecion());
-        txtTelf.setText(buscarM.getTelefono());
-       
+        if (buscarM == null) {
+            JOptionPane.showMessageDialog(null, "Codigo no existe");
+        } else {
+            System.out.println(buscarM);
+            txtNombre.setText(buscarM.getNombre());
+            txtCed.setText(buscarM.getCedula());
+            txtDir.setText(buscarM.getDirecion());
+            txtTelf.setText(buscarM.getTelefono());
+        }
     }//GEN-LAST:event_btnBuscarMActionPerformed
 
 

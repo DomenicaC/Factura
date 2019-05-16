@@ -5,6 +5,10 @@
  */
 package ec.edu.ups.vista;
 
+import ec.edu.ups.Modelo.Producto;
+import ec.edu.ups.controladores.ControladorProducto;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Domenica Cañizares
@@ -14,8 +18,11 @@ public class ProductoEliminar extends javax.swing.JInternalFrame {
     /**
      * Creates new form ProductoEliminar
      */
-    public ProductoEliminar() {
+    private ControladorProducto contProd;
+
+    public ProductoEliminar(ControladorProducto contProd) {
         initComponents();
+        this.contProd = contProd;
     }
 
     /**
@@ -27,10 +34,19 @@ public class ProductoEliminar extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnEliminarP = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        btnEliminarP = new javax.swing.JButton();
+        txtCodigoE = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtNombreE = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtPrecioE = new javax.swing.JTextField();
+        btnBuscarM = new javax.swing.JButton();
+        btnEliP = new javax.swing.JButton();
+
+        btnEliminarP.setText("Eliminar");
+        btnEliminarP.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setText("Producto");
@@ -38,50 +54,125 @@ public class ProductoEliminar extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setText("Codigo");
 
-        jTextField2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        txtCodigoE.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
 
-        btnEliminarP.setText("Eliminar");
-        btnEliminarP.setToolTipText("");
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setText("Nombre");
+
+        txtNombreE.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel6.setText("Precio Unitario");
+
+        txtPrecioE.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+
+        btnBuscarM.setText("Buscar");
+        btnBuscarM.setToolTipText("");
+        btnBuscarM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarMActionPerformed(evt);
+            }
+        });
+
+        btnEliP.setText("Eliminar");
+        btnEliP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(jLabel1))
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel2)
+                        .addGap(36, 36, 36))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecioE, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(btnEliP))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(36, 36, 36)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(btnEliminarP)))
-                .addGap(38, 38, 38))
+                        .addComponent(txtCodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscarM))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarP))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnBuscarM)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel3)
+                        .addComponent(txtCodigoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombreE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPrecioE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addComponent(btnEliP)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBuscarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMActionPerformed
+        int codigo = Integer.parseInt(txtCodigoE.getText());
+        Producto buscarP = contProd.read(codigo);
+        System.out.println(buscarP);
+        if (buscarP == null) {
+            JOptionPane.showMessageDialog(null, "El codigo no existe");
+        } else {
+            txtNombreE.setText(buscarP.getNombre());
+            txtPrecioE.setText(String.valueOf(buscarP.getPrecio()));
+        }
+    }//GEN-LAST:event_btnBuscarMActionPerformed
+
+    private void btnEliPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliPActionPerformed
+        //int codigo = Integer.parseInt(txtCodigoE.getText());
+        Producto eliminarP = new Producto();
+        contProd.delete(Integer.parseInt(txtCodigoE.getText()));
+        JOptionPane.showMessageDialog(this, "Producto Eliminado");
+
+        txtNombreE.setText("");
+        txtPrecioE.setText("");
+        txtCodigoE.setText("");
+    }//GEN-LAST:event_btnEliPActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarM;
+    private javax.swing.JButton btnEliP;
     private javax.swing.JButton btnEliminarP;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField txtCodigoE;
+    private javax.swing.JTextField txtNombreE;
+    private javax.swing.JTextField txtPrecioE;
     // End of variables declaration//GEN-END:variables
 }

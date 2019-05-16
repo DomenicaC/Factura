@@ -30,14 +30,14 @@ public class ControladorFactura {
     //crear un num=evo objeto en la lista
     public void create(Factura objeto){
         codigo ++;
-        objeto.setCodigo(codigo);
+        objeto.setRuc(codigo);
         lista.add(objeto);
     }
         
     //leer un objeto en la lista por medio del codigo
-    public Factura read(int ced){
+    public Factura read(int codigo){
         for (Factura fac : lista) {
-            if (fac.getCodigo() == ced) {
+            if (fac.getRuc()== codigo) {
                 return fac;
             }
         }
@@ -56,7 +56,7 @@ public class ControladorFactura {
     //eliminar un objeto por medio del codigo
     public ControladorFactura delete(int codigo){
         for (Factura fac : lista) {
-            if (fac.getCodigo() == codigo){
+            if (fac.getRuc()== codigo){
                 lista.remove(fac);
                 break;
             }
@@ -67,7 +67,7 @@ public class ControladorFactura {
     //imprime todos los objetos de la lista
     public void print(){
         for (Factura fac : lista) {
-            System.out.println(fac.getCodigo());
+            System.out.println(fac.getRuc());
         }
     }
 

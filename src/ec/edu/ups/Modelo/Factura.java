@@ -5,24 +5,36 @@
  */
 package ec.edu.ups.Modelo;
 
+import java.util.List;
+import java.util.Date;
+import ec.edu.ups.Modelo.FacturaDetalle;
+import java.util.ArrayList;
+
 /**
  *
  * @author Domenica Cañizares
  */
-public class Factura {
+public class Factura{
     private double iva;
     private double total;
     private double descuento;
-    private int codigo;
+    private int ruc;
+    private Date fecha;
+    private Cliente cliente;
+    private List<FacturaDetalle> detalle;
 
     public Factura() {
+        detalle = new ArrayList<>();
     }
 
-    public Factura(double iva, double total, double descuento, int codigo) {
+    public Factura(double iva, double total, double descuento, int ruc, Date fecha, Cliente cliente, List<FacturaDetalle> detalle) {
         this.iva = iva;
         this.total = total;
         this.descuento = descuento;
-        this.codigo = codigo;
+        this.ruc = ruc;
+        this.fecha = fecha;
+        this.cliente = cliente;
+        this.detalle = detalle;
     }
 
     public double getIva() {
@@ -49,18 +61,64 @@ public class Factura {
         this.descuento = descuento;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getRuc() {
+        return ruc;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setRuc(int ruc) {
+        this.ruc = ruc;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<FacturaDetalle> getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(List<FacturaDetalle> detalle) {
+        this.detalle = detalle;
     }
 
     @Override
-    public String toString() {
-        return "Factura{" + "iva=" + iva + ", total=" + total + ", descuento=" + descuento + ", codigo=" + codigo + '}';
+    public int hashCode() {
+        int hash = 3;
+        hash = 17 * hash + this.ruc;
+        return hash;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Factura other = (Factura) obj;
+        if (this.ruc != other.ruc) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
+    
+    
     
     
 }

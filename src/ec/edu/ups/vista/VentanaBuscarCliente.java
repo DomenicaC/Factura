@@ -7,6 +7,7 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.Modelo.Cliente;
 import ec.edu.ups.controladores.ControladorCliente;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,7 +16,7 @@ import ec.edu.ups.controladores.ControladorCliente;
 public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
 
     private ControladorCliente contCliente;
-    
+
     /**
      * Creates new form VentanaLeerCliente
      */
@@ -184,11 +185,14 @@ public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
         int codigo = Integer.parseInt(txtCod.getText());
         Cliente buscar = contCliente.read(codigo);
         System.out.println(buscar);
-        txtNombre.setText(buscar.getNombre());
-        txtCed.setText(buscar.getCedula());
-        txtDir.setText(buscar.getDirecion());
-        txtTelf.setText(buscar.getTelefono());
-        
+        if (buscar == null) {
+            JOptionPane.showMessageDialog(this, "No existe el codigo \n Digite otro");
+        } else {
+            txtNombre.setText(buscar.getNombre());
+            txtCed.setText(buscar.getCedula());
+            txtDir.setText(buscar.getDirecion());
+            txtTelf.setText(buscar.getTelefono());
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

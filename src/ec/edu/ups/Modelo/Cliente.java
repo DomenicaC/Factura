@@ -5,6 +5,8 @@
  */
 package ec.edu.ups.Modelo;
 
+import java.util.Objects;
+
 /**
  *
  * @author Domenica Cañizares
@@ -75,6 +77,36 @@ public class Cliente {
     public String toString() {
         return "Cliente{" + "codigo=" + codigo + ", nombre=" + nombre + ", cedula=" + cedula + ", direcion=" + direcion + ", telefono=" + telefono + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 61 * hash + this.codigo;
+        hash = 61 * hash + Objects.hashCode(this.cedula);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        if (!Objects.equals(this.cedula, other.cedula)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
+    
     
     
 }

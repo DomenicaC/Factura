@@ -12,23 +12,19 @@ package ec.edu.ups.Modelo;
 public class Producto {
     private int codigo;
     private String nombre;
-    private String descripcion;
-    private int cantidad;
     private double precio;
-    private double subtotalP;
 
     public Producto() {
     }
     
     //constructor
-    public Producto(int codigo, String nombre, String descripcion, int cantidad, double precio, double subtotalP) {
+
+    public Producto(int codigo, String nombre, double precio) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.cantidad = cantidad;
         this.precio = precio;
-        this.subtotalP = subtotalP;
     }
+    
 
     //set
     public void setCodigo(int codigo) {
@@ -39,22 +35,9 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public void setSubtotalP(double subtotalP) {
-        this.subtotalP = subtotalP;
-    }
-    
+    }    
 
     //get
     public int getCodigo() {
@@ -65,22 +48,9 @@ public class Producto {
         return nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
     public double getPrecio() {
         return precio;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public double getSubtotalP() {
-        return subtotalP;
-    }
-    
+    }  
 
     //hashCode
     @Override
@@ -109,9 +79,6 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", cantidad=" + cantidad + ", precio=" + precio + ", subtotalP=" + subtotalP + '}';
+        return super.toString()+"Producto{" + "codigo=" + codigo + ", nombre=" + nombre +", precio=" + precio +'}';
     }
-    
-    
-    
 }

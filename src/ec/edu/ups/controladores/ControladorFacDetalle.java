@@ -5,7 +5,7 @@
  */
 package ec.edu.ups.controladores;
 
-import ec.edu.ups.Modelo.Cliente;
+import ec.edu.ups.Modelo.FacturaDetalle;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,64 +13,50 @@ import java.util.Set;
  *
  * @author Domenica Cañizares
  */
-public class ControladorCliente {
-    private Set<Cliente> lista;
+public class ControladorFacDetalle {
+    private Set<FacturaDetalle> lista;
     private int codigo;
-
-    public ControladorCliente() {
-        lista= new HashSet<>();
-        codigo = 0;
-    }
 
     public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public ControladorFacDetalle() {
+        lista= new HashSet<>();
+        codigo = 0;
     }
     
     //crear un num=evo objeto en la lista
-    public void create(Cliente objeto){
+    public void create(FacturaDetalle objeto){
         codigo ++;
         objeto.setCodigo(codigo);
         lista.add(objeto);
     }
         
     //leer un objeto en la lista por medio del codigo
-    public Cliente read(int codigo){
-        for (Cliente cli : lista) {
-            if (cli.getCodigo() == codigo) {
-                return cli;
-            }
-        }
-        return null;
-    }
-    
-    public Cliente readC(String ced){
-        for (Cliente cliC : lista) {
-            if(cliC.getCedula().equals(ced)){
-                return cliC;
+    public FacturaDetalle read(int codigo){
+        for (FacturaDetalle fac : lista) {
+            if (fac.getCodigo()== codigo) {
+                return fac;
             }
         }
         return null;
     }
     
     //modificar un objeto en la lista por medio del codigo
-    public ControladorCliente update(Cliente objeto){
+    public ControladorFactura update(FacturaDetalle objeto){
         if(lista.contains(objeto)){
             lista.remove(objeto);
             lista.add(objeto);
-            
         }
         return null;
     }
     
     //eliminar un objeto por medio del codigo
-    public ControladorCliente delete(int codigo){
-        for (Cliente cli : lista) {
-            if (cli.getCodigo() == codigo){
-                lista.remove(cli);
+    public ControladorFactura delete(int codigo){
+        for (FacturaDetalle fac : lista) {
+            if (fac.getCodigo()== codigo){
+                lista.remove(fac);
                 break;
             }
         }
@@ -79,13 +65,12 @@ public class ControladorCliente {
     
     //imprime todos los objetos de la lista
     public void print(){
-        for (Cliente cli : lista) {
-            System.out.println(cli.getNombre());
+        for (FacturaDetalle fac : lista) {
+            System.out.println(fac.getCodigo());
         }
     }
 
-    public Set<Cliente> getLista() {
+    public Set<FacturaDetalle> getLista() {
         return lista;
     }
-    
 }

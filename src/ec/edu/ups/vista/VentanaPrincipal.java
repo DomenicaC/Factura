@@ -10,6 +10,8 @@ import ec.edu.ups.controladores.ControladorFactura;
 import ec.edu.ups.controladores.ControladorProducto;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,7 +25,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private Locale localizacion;
     private ResourceBundle mensajes;
     
-    
+    public void ControlaVentana(JInternalFrame inter){
+        boolean ventanaAbierta=true;
+        
+        for (int i = 0; i <desktopPane.getComponentCount() ; i++) {
+            if(inter.getClass().isInstance(desktopPane))
+            JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
+            inter.toFront();
+            desktopPane.moveToFront(inter);
+            ventanaAbierta = false;
+        }
+    }
     
     /**
      * Creates new form VentanaPrincipal
@@ -64,6 +76,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         desktopPane = new javax.swing.JDesktopPane();
         jlbTitulo = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
@@ -79,6 +92,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         modificarPMenuItem = new javax.swing.JMenuItem();
         eliminarPMenuItem = new javax.swing.JMenuItem();
         listarPMenuItem = new javax.swing.JMenuItem();
+        FacDeMenu = new javax.swing.JMenu();
+        btnCrear = new javax.swing.JMenuItem();
         facMenu = new javax.swing.JMenu();
         crearFMenuItem = new javax.swing.JMenuItem();
         modificarFMenuItem = new javax.swing.JMenuItem();
@@ -104,6 +119,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jMenu5.setText("Edit");
         jMenuBar2.add(jMenu5);
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,7 +197,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         buscarPMenuItem.setMnemonic('y');
         buscarPMenuItem.setText("Buscar ");
-        buscarPMenuItem.setActionCommand("Buscar ");
         buscarPMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarPMenuItemActionPerformed(evt);
@@ -190,7 +206,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         modificarPMenuItem.setMnemonic('p');
         modificarPMenuItem.setText("Modificar ");
-        modificarPMenuItem.setActionCommand("Modificar ");
         modificarPMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarPMenuItemActionPerformed(evt);
@@ -200,7 +215,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         eliminarPMenuItem.setMnemonic('d');
         eliminarPMenuItem.setText("Eliminar ");
-        eliminarPMenuItem.setActionCommand("Eliminar ");
         eliminarPMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarPMenuItemActionPerformed(evt);
@@ -210,7 +224,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         listarPMenuItem.setMnemonic('d');
         listarPMenuItem.setText("Listar ");
-        listarPMenuItem.setActionCommand("Listar ");
         listarPMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listarPMenuItemActionPerformed(evt);
@@ -219,6 +232,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         prodMenu.add(listarPMenuItem);
 
         menuBar.add(prodMenu);
+
+        FacDeMenu.setText("Factura Detalle");
+
+        btnCrear.setText("Crear");
+        btnCrear.setToolTipText("");
+        btnCrear.setActionCommand("Crear");
+        btnCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearActionPerformed(evt);
+            }
+        });
+        FacDeMenu.add(btnCrear);
+
+        menuBar.add(FacDeMenu);
 
         facMenu.setMnemonic('h');
         facMenu.setText("Factura");
@@ -309,7 +336,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarMenuItemActionPerformed
-        System.exit(0);
+        VentanaELiminarCliente eliminarC = new VentanaELiminarCliente(contCliente);
+        eliminarC.setVisible(true);
+        desktopPane.add(eliminarC);
+        jlbTitulo.setVisible(false);
     }//GEN-LAST:event_eliminarMenuItemActionPerformed
 
     private void listarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarMenuItemActionPerformed
@@ -352,7 +382,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_crearPMenuItemActionPerformed
 
     private void crearFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearFMenuItemActionPerformed
-        CrearFactura crearF = new CrearFactura(contFact);//crear
+        CrearFactura crearF = new CrearFactura(contFact, contProd, contCliente);//crear
         crearF.setVisible(true);
         desktopPane.add(crearF);
         jlbTitulo.setVisible(false);
@@ -366,14 +396,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarPMenuItemActionPerformed
 
     private void modificarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPMenuItemActionPerformed
-        ProductoModificar modP = new ProductoModificar(/*contProducto*/);//crear
+        ProductoModificar modP = new ProductoModificar(contProd);//crear
         modP.setVisible(true);
         desktopPane.add(modP);
         jlbTitulo.setVisible(false);
     }//GEN-LAST:event_modificarPMenuItemActionPerformed
 
     private void eliminarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPMenuItemActionPerformed
-        ProductoEliminar eliminarP = new ProductoEliminar(/*contProducto*/);//crear
+        ProductoEliminar eliminarP = new ProductoEliminar(contProd);//crear
         eliminarP.setVisible(true);
         desktopPane.add(eliminarP);
         jlbTitulo.setVisible(false);
@@ -427,6 +457,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         cambiarIdioma();
         System.out.println("Localizacion Forzada: "+Locale.getDefault().getLanguage());
     }//GEN-LAST:event_espMenuItemActionPerformed
+
+    private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
+        FacDetalleCrear crearFD = new FacDetalleCrear(contProd);//crear
+        crearFD.setVisible(true);
+        desktopPane.add(crearFD);
+        jlbTitulo.setVisible(false);
+    }//GEN-LAST:event_btnCrearActionPerformed
 
     
     public void cambiarIdioma(){
@@ -498,6 +535,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu FacDeMenu;
+    private javax.swing.JMenuItem btnCrear;
     private javax.swing.JMenuItem buscarFMenuItem;
     private javax.swing.JMenuItem buscarMenuItem;
     private javax.swing.JMenuItem buscarPMenuItem;
@@ -521,6 +560,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel jlbTitulo;
     private javax.swing.JMenuItem listarFMenuItem;
     private javax.swing.JMenuItem listarMenuItem;

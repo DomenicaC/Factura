@@ -5,9 +5,9 @@
  */
 package ec.edu.ups.vista;
 
-
 import ec.edu.ups.Modelo.Cliente;
 import ec.edu.ups.controladores.ControladorCliente;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +20,8 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
      * Creates new form VentanaCrear
      */
     private ControladorCliente contCliente;
+
+    
 
     public VentanaCrearCliente(ControladorCliente contCliente) {
         initComponents();

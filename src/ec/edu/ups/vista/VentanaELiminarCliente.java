@@ -18,9 +18,8 @@ public class VentanaELiminarCliente extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaELiminarCliente
      */
-    
     private ControladorCliente contCliente;
-    
+
     public VentanaELiminarCliente(ControladorCliente contCliente) {
         initComponents();
         this.contCliente = contCliente;
@@ -140,12 +139,13 @@ public class VentanaELiminarCliente extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(104, 104, 104)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addComponent(btnBuscarM)))
+                        .addComponent(btnBuscarM))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 250, Short.MAX_VALUE)
                 .addComponent(btnEliminar)
                 .addGap(36, 36, 36))
@@ -177,21 +177,29 @@ public class VentanaELiminarCliente extends javax.swing.JInternalFrame {
 
     private void btnBuscarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMActionPerformed
         int codigo = Integer.parseInt(txtCod.getText());
-        Cliente buscarM = contCliente.read(codigo);
-        System.out.println(buscarM);
-        txtNombre.setText(buscarM.getNombre());
-        txtCed.setText(buscarM.getCedula());
-        txtDir.setText(buscarM.getDirecion());
-        txtTelf.setText(buscarM.getTelefono());
+        Cliente buscarE = contCliente.read(codigo);
+        System.out.println(buscarE);
+        if (buscarE == null) {
+            JOptionPane.showMessageDialog(this, "El codigo no existe");
+        } else {
+            txtNombre.setText(buscarE.getNombre());
+            txtCed.setText(buscarE.getCedula());
+            txtDir.setText(buscarE.getDirecion());
+            txtTelf.setText(buscarE.getTelefono());
+        }
     }//GEN-LAST:event_btnBuscarMActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         Cliente eliminar = new Cliente();
-        System.out.println(eliminar.getCodigo());
+        //System.out.println(eliminar.getCodigo());
+        contCliente.delete(Integer.parseInt(txtCod.getText()));
+        JOptionPane.showMessageDialog(this, "Cliente eliminado correctamente");
         
-       /* contCliente.delete(eliminar.getCodigo(),eliminar.getNombre());*/
-        
-        JOptionPane.showMessageDialog(this, "Cliente eliminado correctamente", "Crear Cliente", JOptionPane.OK_OPTION);
+        txtCod.setText("");
+        txtNombre.setText("");
+        txtCed.setText("");
+        txtDir.setText("");
+        txtTelf.setText("");
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
