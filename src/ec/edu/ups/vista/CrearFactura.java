@@ -23,6 +23,7 @@ public class CrearFactura extends javax.swing.JInternalFrame {
      * Creates new form Factura
      */
     private ControladorFactura contFact;
+    public static String x;
 
     private ControladorCliente contCliente = new ControladorCliente();
     private ControladorProducto contProd = new ControladorProducto();
@@ -35,6 +36,14 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         this.contProd = contProd;
 
         txtCodF.setText(String.valueOf(this.contFact.getCodigo()));
+        x = "x";
+        //centrar ventana
+        int a = VentanaPrincipal.desktopPane.getWidth() - this.getWidth();
+        int b = VentanaPrincipal.desktopPane.getHeight() - this.getHeight();
+
+        setLocation(a / 2, b / 2);
+
+        setVisible(true);
     }
 
     /**
@@ -94,6 +103,23 @@ public class CrearFactura extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setText("Factura");
@@ -350,15 +376,16 @@ public class CrearFactura extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(txtNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarP)
-                    .addComponent(jLabel17)
-                    .addComponent(txtPrecioUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel18)
-                        .addComponent(txtCodPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCodPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14)
+                        .addComponent(txtNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscarP)
+                        .addComponent(jLabel17)
+                        .addComponent(txtPrecioUF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
@@ -560,13 +587,13 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private void btnBuscarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPActionPerformed
         String nombre = txtNombreP.getText();
         Producto buscarPr = contProd.readN(nombre);
-        if (buscarPr == null){
+        if (buscarPr == null) {
             JOptionPane.showMessageDialog(this, "Producto no existe");
-        }else{
+        } else {
             txtNombreP.setText(buscarPr.getNombre());
             txtCodPF.setText(String.valueOf(buscarPr.getCodigo()));
             txtPrecioUF.setText(String.valueOf(buscarPr.getPrecio()));
-            
+
         }
     }//GEN-LAST:event_btnBuscarPActionPerformed
 
@@ -589,6 +616,10 @@ public class CrearFactura extends javax.swing.JInternalFrame {
     private void txtCodPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodPFActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        x = null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

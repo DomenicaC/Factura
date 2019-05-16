@@ -16,13 +16,24 @@ import javax.swing.JOptionPane;
 public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
 
     private ControladorCliente contCliente;
+    
+    public static String x;
 
     /**
      * Creates new form VentanaLeerCliente
      */
     public VentanaBuscarCliente(ControladorCliente contCliente) {
         initComponents();
+        x="x";
         this.contCliente = contCliente;
+        
+        //centrar ventana
+        int a = VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
+        int b = VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
+        
+        setLocation(a/2, b/2);
+        
+        setVisible(true);
     }
 
     /**
@@ -51,6 +62,23 @@ public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setText("Codigo");
@@ -149,7 +177,6 @@ public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
@@ -198,6 +225,10 @@ public class VentanaBuscarCliente extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

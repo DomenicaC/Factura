@@ -19,16 +19,34 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaCrear
      */
-    private ControladorCliente contCliente;
-
     
+    public static String x;
+    
+    private ControladorCliente contCliente;
 
     public VentanaCrearCliente(ControladorCliente contCliente) {
         initComponents();
+        x="x";
+        
         this.contCliente = contCliente;
         txtCod.setText(String.valueOf(this.contCliente.getCodigo()));
+        
+        //centrar ventana
+        int a = VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
+        int b = VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
+        
+        setLocation(a/2, b/2);
+        
+        setVisible(true);
+        
     }
-
+//const
+   
+/*
+    private VentanaCrearCliente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,6 +73,23 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -144,6 +179,10 @@ public class VentanaCrearCliente extends javax.swing.JInternalFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

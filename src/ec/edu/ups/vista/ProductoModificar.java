@@ -19,10 +19,22 @@ public class ProductoModificar extends javax.swing.JInternalFrame {
      * Creates new form ProductoModificar
      */
     private ControladorProducto contProd;
+    public static String x;
+    
 
     public ProductoModificar(ControladorProducto contProd) {
         initComponents();
+        x="x";
+        
         this.contProd = contProd;
+        
+        //centrar ventana
+        int a = VentanaPrincipal.desktopPane.getWidth()-this.getWidth();
+        int b = VentanaPrincipal.desktopPane.getHeight()-this.getHeight();
+        
+        setLocation(a/2, b/2);
+        
+        setVisible(true);
     }
 
     /**
@@ -43,6 +55,24 @@ public class ProductoModificar extends javax.swing.JInternalFrame {
         txtPrecioM = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnBuscarM = new javax.swing.JButton();
+
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("Nombre");
@@ -164,6 +194,10 @@ public class ProductoModificar extends javax.swing.JInternalFrame {
         txtNombreM.setText("");
         txtPrecioM.setText("");
     }//GEN-LAST:event_btnModificarPActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

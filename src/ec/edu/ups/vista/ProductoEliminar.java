@@ -19,10 +19,21 @@ public class ProductoEliminar extends javax.swing.JInternalFrame {
      * Creates new form ProductoEliminar
      */
     private ControladorProducto contProd;
+    public static String x;
 
     public ProductoEliminar(ControladorProducto contProd) {
         initComponents();
+        x="x";
+        
         this.contProd = contProd;
+
+                //centrar ventana
+        int a = VentanaPrincipal.desktopPane.getWidth() - this.getWidth();
+        int b = VentanaPrincipal.desktopPane.getHeight() - this.getHeight();
+
+        setLocation(a / 2, b / 2);
+
+        setVisible(true);
     }
 
     /**
@@ -47,6 +58,24 @@ public class ProductoEliminar extends javax.swing.JInternalFrame {
 
         btnEliminarP.setText("Eliminar");
         btnEliminarP.setToolTipText("");
+
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameClosing(evt);
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setText("Producto");
@@ -161,6 +190,10 @@ public class ProductoEliminar extends javax.swing.JInternalFrame {
         txtPrecioE.setText("");
         txtCodigoE.setText("");
     }//GEN-LAST:event_btnEliPActionPerformed
+
+    private void formInternalFrameClosing(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameClosing
+        x=null;
+    }//GEN-LAST:event_formInternalFrameClosing
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

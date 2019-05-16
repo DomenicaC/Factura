@@ -24,19 +24,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private ControladorFactura contFact;
     private Locale localizacion;
     private ResourceBundle mensajes;
-    
-    public void ControlaVentana(JInternalFrame inter){
-        boolean ventanaAbierta=true;
-        
-        for (int i = 0; i <desktopPane.getComponentCount() ; i++) {
-            if(inter.getClass().isInstance(desktopPane))
-            JOptionPane.showMessageDialog(this, "La ventana ya esta abierta");
-            inter.toFront();
-            desktopPane.moveToFront(inter);
-            ventanaAbierta = false;
-        }
-    }
-    
+
     /**
      * Creates new form VentanaPrincipal
      */
@@ -46,13 +34,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         contCliente = new ControladorCliente();
         contProd = new ControladorProducto();
         contFact = new ControladorFactura();
-        
-        System.out.println("Localizacion por defecto: "+Locale.getDefault().getLanguage());
-        
-        localizacion = new Locale("es","EC");
+
+        setExtendedState(MAXIMIZED_BOTH);
+
+        System.out.println("Localizacion por defecto: " + Locale.getDefault().getLanguage());
+
+        localizacion = new Locale("es", "EC");
         Locale.setDefault(localizacion);
-        System.out.println("Localizacion Forzada: "+Locale.getDefault().getLanguage());
-        
+        System.out.println("Localizacion Forzada: " + Locale.getDefault().getLanguage());
+
         mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", Locale.getDefault());
         System.out.println("Mensajes");
         System.out.println(mensajes.getString("menu.item.crear"));
@@ -237,7 +227,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         btnCrear.setText("Crear");
         btnCrear.setToolTipText("");
-        btnCrear.setActionCommand("Crear");
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearActionPerformed(evt);
@@ -329,176 +318,318 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void eliminarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarMenuItemActionPerformed
-        VentanaELiminarCliente eliminarC = new VentanaELiminarCliente(contCliente);
-        eliminarC.setVisible(true);
-        desktopPane.add(eliminarC);
-        jlbTitulo.setVisible(false);
+        String x = VentanaELiminarCliente.x;
+        try {
+            if (x == null) {
+                VentanaELiminarCliente eliminarC = new VentanaELiminarCliente(contCliente);
+                eliminarC.setVisible(true);
+                desktopPane.add(eliminarC);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_eliminarMenuItemActionPerformed
 
     private void listarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarMenuItemActionPerformed
-        VentanaListarCliente listar = new VentanaListarCliente(contCliente);//crear
-        listar.setVisible(true);
-        desktopPane.add(listar);
-        jlbTitulo.setVisible(false);
+        String x = VentanaListarCliente.x;
+        try {
+            if (x == null) {
+                VentanaListarCliente listar = new VentanaListarCliente(contCliente);//crear
+                listar.setVisible(true);
+                desktopPane.add(listar);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_listarMenuItemActionPerformed
 
     private void crearMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearMenuItemActionPerformed
-        VentanaCrearCliente crear = new VentanaCrearCliente(contCliente);//crear
-        crear.setVisible(true);
-        desktopPane.add(crear);
-        jlbTitulo.setVisible(false);
-        
+        String x = VentanaCrearCliente.x;
+        try {
+            if (x == null) {
+                VentanaCrearCliente crear = new VentanaCrearCliente(contCliente);//crear
+                //crear.setVisible(true);
+                desktopPane.add(crear);
+                desktopPane.moveToFront(crear);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_crearMenuItemActionPerformed
 
     private void modificarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarMenuItemActionPerformed
-        VentanaModificarCliente mod = new VentanaModificarCliente(contCliente);//crear
-        mod.setVisible(true);
-        desktopPane.add(mod);
-        jlbTitulo.setVisible(false);
-        
-        
+        String x = VentanaModificarCliente.x;
+        try {
+            if (x == null) {
+                VentanaModificarCliente mod = new VentanaModificarCliente(contCliente);//crear
+                mod.setVisible(true);
+                desktopPane.add(mod);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_modificarMenuItemActionPerformed
 
     private void buscarMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMenuItemActionPerformed
-        VentanaBuscarCliente buscarC = new VentanaBuscarCliente(contCliente);//buscar
-        buscarC.setVisible(true);
-        desktopPane.add(buscarC);
-        jlbTitulo.setVisible(false);
-        
+        String x = VentanaBuscarCliente.x;
+        try {
+            if (x == null) {
+                VentanaBuscarCliente buscarC = new VentanaBuscarCliente(contCliente);//buscar
+                buscarC.setVisible(true);
+                desktopPane.add(buscarC);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_buscarMenuItemActionPerformed
 
     private void crearPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPMenuItemActionPerformed
-        ProductoCrear crearP = new ProductoCrear(contProd);//crear
-        crearP.setVisible(true);
-        desktopPane.add(crearP);
-        jlbTitulo.setVisible(false);
+        String x = ProductoCrear.x;
+        try {
+            if (x == null) {
+                ProductoCrear crearP = new ProductoCrear(contProd);//crear
+                crearP.setVisible(true);
+                desktopPane.add(crearP);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_crearPMenuItemActionPerformed
 
     private void crearFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearFMenuItemActionPerformed
-        CrearFactura crearF = new CrearFactura(contFact, contProd, contCliente);//crear
-        crearF.setVisible(true);
-        desktopPane.add(crearF);
-        jlbTitulo.setVisible(false);
+        String x = CrearFactura.x;
+        try {
+            if (x == null) {
+                CrearFactura crearF = new CrearFactura(contFact, contProd, contCliente);//crear
+
+                desktopPane.add(crearF);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_crearFMenuItemActionPerformed
 
     private void buscarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPMenuItemActionPerformed
-        ProductoBuscar buscarP = new ProductoBuscar(contProd);//crear
-        buscarP.setVisible(true);
-        desktopPane.add(buscarP);
-        jlbTitulo.setVisible(false);
+        String x = ProductoBuscar.x;
+        try {
+            if (x == null) {
+                ProductoBuscar buscarP = new ProductoBuscar(contProd);//crear
+
+                desktopPane.add(buscarP);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_buscarPMenuItemActionPerformed
 
     private void modificarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPMenuItemActionPerformed
-        ProductoModificar modP = new ProductoModificar(contProd);//crear
-        modP.setVisible(true);
-        desktopPane.add(modP);
-        jlbTitulo.setVisible(false);
+        String x = ProductoModificar.x;
+        try {
+            if (x == null) {
+                ProductoModificar modP = new ProductoModificar(contProd);//crear
+
+                desktopPane.add(modP);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_modificarPMenuItemActionPerformed
 
     private void eliminarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPMenuItemActionPerformed
-        ProductoEliminar eliminarP = new ProductoEliminar(contProd);//crear
-        eliminarP.setVisible(true);
-        desktopPane.add(eliminarP);
-        jlbTitulo.setVisible(false);
+        String x = ProductoEliminar.x;
+        try {
+            if (x == null) {
+                ProductoEliminar eliminarP = new ProductoEliminar(contProd);//crear
+
+                desktopPane.add(eliminarP);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_eliminarPMenuItemActionPerformed
 
     private void listarPMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarPMenuItemActionPerformed
-        ProductoListar listarP = new ProductoListar(contProd);//crear
-        listarP.setVisible(true);
-        desktopPane.add(listarP);
-        jlbTitulo.setVisible(false);
+        String x = ProductoListar.x;
+        try {
+            if (x == null) {
+                ProductoListar listarP = new ProductoListar(contProd);//crear
+
+                desktopPane.add(listarP);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_listarPMenuItemActionPerformed
 
     private void modificarFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarFMenuItemActionPerformed
-        ModificarFactura modF = new ModificarFactura();//modificar
-        modF.setVisible(true);
-        desktopPane.add(modF);
-        jlbTitulo.setVisible(false);
+        String x = ModificarFactura.x;
+        try {
+            if (x == null) {
+                ModificarFactura modF = new ModificarFactura();//modificar
+
+                desktopPane.add(modF);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_modificarFMenuItemActionPerformed
 
     private void buscarFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarFMenuItemActionPerformed
-        BuscarFactura buscarF = new BuscarFactura();//buscar
-        buscarF.setVisible(true);
-        desktopPane.add(buscarF);
-        jlbTitulo.setVisible(false);
+        String x = BuscarFactura.x;
+        try {
+            if (x == null) {
+                BuscarFactura buscarF = new BuscarFactura();//buscar
+
+                desktopPane.add(buscarF);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_buscarFMenuItemActionPerformed
 
     private void eliminarFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarFMenuItemActionPerformed
-        EliminarFactura eliF = new EliminarFactura();//eliminar
-        eliF.setVisible(true);
-        desktopPane.add(eliF);
-        jlbTitulo.setVisible(false);
+        String x = EliminarFactura.x;
+        try {
+            if (x == null) {
+                EliminarFactura eliF = new EliminarFactura();//eliminar
+                eliF.setVisible(true);
+                desktopPane.add(eliF);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_eliminarFMenuItemActionPerformed
 
     private void listarFMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarFMenuItemActionPerformed
-        ListarFactura listarF = new ListarFactura();//eliminar
-        listarF.setVisible(true);
-        desktopPane.add(listarF);
-        jlbTitulo.setVisible(false);
+        String x = ListarFactura.x;
+        try {
+            if (x == null) {
+                ListarFactura listarF = new ListarFactura();//eliminar
+                listarF.setVisible(true);
+                desktopPane.add(listarF);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_listarFMenuItemActionPerformed
 
     private void inglesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inglesMenuItemActionPerformed
-        localizacion = new Locale("en","US");
+        localizacion = new Locale("en", "US");
         Locale.setDefault(localizacion);
         cambiarIdioma();
-        System.out.println("Localizacion Forzada: "+Locale.getDefault().getLanguage());
+        System.out.println("Localizacion Forzada: " + Locale.getDefault().getLanguage());
     }//GEN-LAST:event_inglesMenuItemActionPerformed
 
     private void espMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_espMenuItemActionPerformed
-        localizacion = new Locale("es","EC");
+        localizacion = new Locale("es", "EC");
         Locale.setDefault(localizacion);
         cambiarIdioma();
-        System.out.println("Localizacion Forzada: "+Locale.getDefault().getLanguage());
+        System.out.println("Localizacion Forzada: " + Locale.getDefault().getLanguage());
     }//GEN-LAST:event_espMenuItemActionPerformed
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        FacDetalleCrear crearFD = new FacDetalleCrear(contProd);//crear
-        crearFD.setVisible(true);
-        desktopPane.add(crearFD);
-        jlbTitulo.setVisible(false);
+        String x = ListarFactura.x;
+        try {
+            if (x == null) {
+                FacDetalleCrear crearFD = new FacDetalleCrear(contProd);//crear
+
+                desktopPane.add(crearFD);
+                jlbTitulo.setVisible(false);
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La ventana ya esta abierta");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnCrearActionPerformed
 
-    
-    public void cambiarIdioma(){
+    public void cambiarIdioma() {
         mensajes = ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes", Locale.getDefault());
-        
+
         clienteMenu.setText(mensajes.getString("menu.cliente"));
-        
+
         crearMenuItem.setText(mensajes.getString("menu.item.crear"));
         buscarMenuItem.setText(mensajes.getString("menu.item.buscar"));
         modificarMenuItem.setText(mensajes.getString("menu.item.modificar"));
         eliminarMenuItem.setText(mensajes.getString("menu.item.eliminar"));
         listarMenuItem.setText(mensajes.getString("menu.item.listar"));
-        
+
         prodMenu.setText(mensajes.getString("menu.producto"));
-        
+
         crearPMenuItem.setText(mensajes.getString("menu.item.crear"));
         buscarPMenuItem.setText(mensajes.getString("menu.item.buscar"));
         modificarPMenuItem.setText(mensajes.getString("menu.item.modificar"));
         eliminarPMenuItem.setText(mensajes.getString("menu.item.eliminar"));
         listarPMenuItem.setText(mensajes.getString("menu.item.listar"));
-        
+
         facMenu.setText(mensajes.getString("menu.factura"));
-        
+
         crearFMenuItem.setText(mensajes.getString("menu.item.crear"));
         buscarFMenuItem.setText(mensajes.getString("menu.item.buscar"));
         modificarFMenuItem.setText(mensajes.getString("menu.item.modificar"));
         eliminarFMenuItem.setText(mensajes.getString("menu.item.eliminar"));
         listarFMenuItem.setText(mensajes.getString("menu.item.listar"));
-        
+
         idiomaMenu.setText(mensajes.getString("menu.idioma"));
         inglesMenuItem.setText(mensajes.getString("menu.item.ingles"));
         espMenuItem.setText(mensajes.getString("menu.item.espa"));
-        
+
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -544,7 +675,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem crearFMenuItem;
     private javax.swing.JMenuItem crearMenuItem;
     private javax.swing.JMenuItem crearPMenuItem;
-    private javax.swing.JDesktopPane desktopPane;
+    public static javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem eliminarFMenuItem;
     private javax.swing.JMenuItem eliminarMenuItem;
     private javax.swing.JMenuItem eliminarPMenuItem;
